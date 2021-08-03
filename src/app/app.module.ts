@@ -1,16 +1,20 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { AppComponent } from './app.component';
+import {NgModule} from '@angular/core';
 import {RouterModule} from "@angular/router";
-import { UsersComponent } from './users/users.component';
-import { PostsComponent } from './posts/posts.component';
-import { HttpClientModule} from "@angular/common/http";
-import {routes} from "./routes/basic.routes";
-import { UserComponent } from './user/user.component';
-import { UserDetailsComponent } from './user-details/user-details.component';
-import { PostComponent } from './post/post.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {HttpClientModule} from "@angular/common/http";
 
+import {AppComponent} from './app.component';
+import {
+  CommentComponent,
+  CommentsComponent,
+  PostComponent,
+  PostDetailsComponent,
+  PostsComponent,
+  UserComponent,
+  UserDetailsComponent,
+  UsersComponent
+} from './components';
+import {routes} from "./routes";
 
 
 @NgModule({
@@ -21,6 +25,9 @@ import { PostComponent } from './post/post.component';
     UserComponent,
     UserDetailsComponent,
     PostComponent,
+    PostDetailsComponent,
+    CommentsComponent,
+    CommentComponent,
 
   ],
   imports: [
@@ -31,4 +38,5 @@ import { PostComponent } from './post/post.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
