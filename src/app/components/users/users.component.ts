@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {UsersService} from "../../services";
-import {IUser} from "../../models";
+import {IUser} from "../models/IUser";
+import {UserService} from "../services/user.service";
 
 
 @Component({
@@ -9,13 +9,13 @@ import {IUser} from "../../models";
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-users: IUser[];
-  constructor(private userService:UsersService) {
+users:IUser[];
+  constructor(private userService:UserService) {
 
   }
 
   ngOnInit(): void {
-    this.userService.getAllUsers().subscribe(value => this.users=value);
+    this.userService.getUsers().subscribe(value =>this.users=value);
   }
 
 }

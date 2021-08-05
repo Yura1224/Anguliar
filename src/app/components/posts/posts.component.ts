@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {IPost} from "../../models/IPost";
-import {PostsService} from "../../services/posts.service";
-
+import {IPost} from "../models/IPost";
+import {PostService} from "../services/post.service";
 
 
 @Component({
@@ -10,11 +9,11 @@ import {PostsService} from "../../services/posts.service";
   styleUrls: ['./posts.component.scss']
 })
 export class PostsComponent implements OnInit {
-posts: IPost[];
-  constructor(private postService:PostsService) { }
+posts:IPost[];
+  constructor(private postService:PostService) { }
 
   ngOnInit(): void {
-    this.postService.getAllPosts().subscribe(value => this.posts=value)
+    this.postService.getPosts().subscribe(value =>this.posts=value)
   }
 
 

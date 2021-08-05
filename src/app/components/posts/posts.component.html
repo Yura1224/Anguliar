@@ -1,2 +1,8 @@
 <router-outlet></router-outlet>
-<app-post *ngFor="let props of posts" [post]="props"></app-post>
+<ul>
+  <li *ngFor="let post of posts">
+    <app-post [post]="post"></app-post>
+  </li>
+
+
+</ul>

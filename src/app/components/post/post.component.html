@@ -1,1 +1,5 @@
-<p>{{post.userId}} {{post.id}} {{post.title}} {{post.body}}<a routerLink="/posts/{{post.id}}">details of post</a></p>
+{{post.userId}}
+{{post.id}}
+{{post.title}}
+{{post.body}}
+<button (click)="gotoDetailsPosts()">post details</button>

@@ -1,21 +1,30 @@
-import {Component} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {IPost} from "../../models/IPost";
-import {PostsService} from "../../services/posts.service";
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
+import {IUser} from "../models/IUser";
+
 
 @Component({
   selector: 'app-user-details',
   templateUrl: './user-details.component.html',
   styleUrls: ['./user-details.component.scss']
 })
-export class UserDetailsComponent {
-  posts: IPost[];
+export class UserDetailsComponent implements OnInit {
 
+  user: IUser;
 
-  constructor(private activatedRoute: ActivatedRoute, private postService: PostsService) {
-    this.activatedRoute.params.subscribe(({id}) => {
-      this.postService.getPostsOneUser(id).subscribe(value => this.posts = value);
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.params.subscribe(value => {
+      this.user = this.router.getCurrentNavigation()?.extras.state as IUser;
+
     });
+
+  }
+  ngOnInit():void{
+
   }
 
+  back() {
+    history.back();
+  }
 }
+

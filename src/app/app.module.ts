@@ -1,12 +1,11 @@
 import {NgModule} from '@angular/core';
-import {RouterModule} from "@angular/router";
+import {RouterModule, Routes} from "@angular/router";
 import {BrowserModule} from '@angular/platform-browser';
 import {HttpClientModule} from "@angular/common/http";
 
 import {AppComponent} from './app.component';
 import {
-  CommentComponent,
-  CommentsComponent,
+
   PostComponent,
   PostDetailsComponent,
   PostsComponent,
@@ -14,8 +13,17 @@ import {
   UserDetailsComponent,
   UsersComponent
 } from './components';
-import {routes} from "./routes";
+import {UserDeactivatorService} from "./components/services/user-deactivator.service";
 
+
+let routes: Routes = [
+  {path: 'users', component: UsersComponent, canDeactivate:[UserDeactivatorService] },
+  {path: 'users/:id', component: UserDetailsComponent, canActivate:[UserDeactivatorService]},
+  // {path: 'users', redirectTo: '', pathMatch: 'full '},
+  {path: 'posts', component: PostsComponent, canDeactivate:[UserDeactivatorService]},
+  {path: 'posts/:id', component: PostDetailsComponent,canActivate:[UserDeactivatorService]},
+  // {path: 'posts', redirectTo: '', pathMatch: 'full '}
+];
 
 @NgModule({
   declarations: [
@@ -26,8 +34,6 @@ import {routes} from "./routes";
     UserDetailsComponent,
     PostComponent,
     PostDetailsComponent,
-    CommentsComponent,
-    CommentComponent,
 
   ],
   imports: [

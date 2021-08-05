@@ -1,3 +1,6 @@
-<p>{{user.id}} {{user.name}} {{user.username}} {{user.email}}<a routerLink="/users/{{user.id}}">details of user</a></p>
+{{user?.id}}
+{{user?.name}}
+{{user?.username}}
+{{user?.email}}
 
-<!--<button (click)="">user details</button>-->
+<button (click)="gotoDetails()">user details</button>
